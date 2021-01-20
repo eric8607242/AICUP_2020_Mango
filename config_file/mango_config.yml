@@ -1,0 +1,52 @@
+cuda: True
+ngpu: 4
+num_workers: 16
+seed: 42
+
+ema: True
+visualize: False
+search: False
+balance_sample: True
+defect_classification: False
+seg_state: True
+
+log_dir: "./logs/"
+write_dir: "./logs/tb/"
+
+path_to_save_metrics: "./logs/metrics/"
+path_to_save_model: "./logs/best_model_size_512_seg_balance_third_branch.pth"
+path_to_grid_image: "./logs/grad_cam"
+
+model_pretrained: "./pretrained/SGNAS_A_best.pth.tar"
+model: "SGNAS_A"
+
+epochs: 10
+batch_size: 32
+print_freq: 100
+
+dataset: mango
+classes: 5
+dataset_dir: /home/jovyan/Mongo_Defects/data/
+input_size: 512
+train_portion: 1
+mean: [0.485, 0.456, 0.406]
+std: [0.229, 0.224, 0.225]
+
+optim_state: !include ./optim_state.yml
+
+lr_scheduler: cosine
+step_size: 80
+decay_ratio: 0.1
+
+threshold: [0.5, 0.5, 0.5, 0.5, 0.5]
+
+min_thres: 0.0
+max_thres: 0.99
+linspace: 20
+
+
+labels_name: ['不良-乳汁吸附', '不良-機械傷害', '不良-炭疽病', '不良-著色不佳', '不良-黑斑病']
+balance_classes: ['不良-乳汁吸附', '不良-機械傷害', '不良-黑斑病']
+
+defect_classification_weight: 0.01
+seg_loss_weight: 0.3
