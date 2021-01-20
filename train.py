@@ -11,7 +11,7 @@ from sklearn.model_selection import StratifiedKFold
 
 from utils.config import get_config
 from utils.util import get_logger, set_random_seed, load_state_dict
-from utils.dataflow import get_transforms, get_dataloader
+from utils.dataflow import get_transforms, get_dataloader, merge_train_dev_data
 from utils.mango_dataset import MangoDataset
 from utils.optim import get_optimizer, get_lr_scheduler, Loss
 from utils.trainer import Trainer
@@ -37,9 +37,6 @@ if __name__ == "__main__":
 
     logging.info("=================================== Experiment title : {} Start ===========================".format(args.title))
 
-    #train_root_path = os.path.join(CONFIG.dataset_dir, "Train_all")
-    #train_csv_path = os.path.join(CONFIG.dataset_dir, "train_all.csv")
-    #train_data_info = pd.read_csv(train_csv_path, header=None)
     train_data_info = merge_train_dev_data(CONFIG.dataset_dir)
 
     folds = StratifiedKFold(n_splits=5, shuffle=True).split(np.arange(train_data_info.shape[0]), train_data_info.iloc[:, 5])

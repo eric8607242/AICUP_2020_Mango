@@ -21,6 +21,7 @@ def visualize_metrics(pred_output, gt_output, CONFIG, classes, epoch, threshold,
     plt.hist(pred_output_false, bins=bins, alpha=0.5, histtype='stepfilled', color='red', edgecolor='none', label="Lable : 0")
     plt.axvline(x=threshold, linewidth=4, ls="--")
 
+    check_dir_exist(os.path.join(CONFIG.path_to_save_metrics))
     check_dir_exist(os.path.join(CONFIG.path_to_save_metrics, str(epoch)))
     
     ax.grid()

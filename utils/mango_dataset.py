@@ -26,7 +26,9 @@ class MangoDataset(Dataset):
         item_info = self.data_info.iloc[idx]
 
         image_name = item_info[0]
-        image_path = os.path.join(self.root_dir, image_name)
+        #image_path = os.path.join(self.root_dir, image_name)
+        #image_path = os.path.join(self.root_dir, image_name)
+        image_path = image_name
 
         label_vector, positions = self._process_labels(item_info[1:])
 

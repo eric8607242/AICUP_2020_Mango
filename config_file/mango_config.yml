@@ -26,7 +26,7 @@ print_freq: 100
 
 dataset: mango
 classes: 5
-dataset_dir: /home/jovyan/Mongo_Defects/data/
+dataset_dir: ./data/
 input_size: 512
 train_portion: 1
 mean: [0.485, 0.456, 0.406]

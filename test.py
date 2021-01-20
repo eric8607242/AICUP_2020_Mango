@@ -9,9 +9,9 @@ import torch
 import torch.nn as nn
 
 from utils.config import get_config
-from utils.util import get_writer, get_logger, set_random_seed, cross_encropy_with_label_smoothing, cal_model_efficient, min_max_normalize, load_state_dict
+from utils.util import get_logger, set_random_seed, load_state_dict
 from utils.dataflow import get_transforms, get_dataset, get_dataloader
-from utils.dataset.mango_dataset import TestMangoDataset
+from utils.mango_dataset import TestMangoDataset
 from utils.optim import get_optimizer, get_lr_scheduler, Loss
 from utils.trainer import Trainer
 from utils.model import Model

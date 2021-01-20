@@ -113,9 +113,9 @@ class Loss:
         return label_loss
 
     def segmentation_loss(self, first_seg_out, second_seg_out, third_seg_out, y):
-        first_y = F.interpolate(y, size=[64, 64])
-        second_y = F.interpolate(y, size=[32, 32])
-        third_y = F.interpolate(y, size=[16, 16])
+        first_y = F.interpolate(y, size=[self.CONFIG.input_size//8, self.CONFIG.input_size//8])
+        second_y = F.interpolate(y, size=[self.CONFIG.input_size//16, self.CONFIG.input_size//16])
+        third_y = F.interpolate(y, size=[self.CONFIG.input_size//32, self.CONFIG.input_size//32])
 
         first_loss = self.loss_bce(first_seg_out, first_y) * self.CONFIG.seg_loss_weight
         second_loss = self.loss_bce(second_seg_out, second_y) * self.CONFIG.seg_loss_weight

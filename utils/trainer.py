@@ -91,7 +91,7 @@ class Trainer:
         gt_labels = torch.cat(gt_labels)
         pred_labels = torch.cat(pred_labels)
 
-        total_f1, metrics, _ = evaluate_metric(gt_labels, pred_labels, self.threshold, epoch, self.CONFIG, visualize=True, log_info="train")
+        total_f1, metrics, _ = evaluate_metric(gt_labels, pred_labels, self.threshold, epoch, self.CONFIG, visualize=self.CONFIG.visualize, log_info="train")
         # ==============================================
 
         self._epoch_stats_logging(metrics, start_time=start_time, epoch=epoch, info_for_logger=info_for_logger, val_or_train="Train")
@@ -124,7 +124,7 @@ class Trainer:
         pred_labels = torch.cat(pred_labels)
 
         # =========== Evaluate =========================
-        total_f1, metrics, error_index = evaluate_metric(gt_labels, pred_labels, self.threshold, epoch, self.CONFIG, visualize=True, log_info="val")
+        total_f1, metrics, error_index = evaluate_metric(gt_labels, pred_labels, self.threshold, epoch, self.CONFIG, visualize=self.CONFIG.visualize, log_info="val")
         # ==============================================
 
         self._epoch_stats_logging(metrics, start_time=start_time, epoch=epoch, val_or_train="val")
